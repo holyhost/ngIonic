@@ -1,0 +1,36 @@
+<div class="main">
+  <!-- 测试用的静态数据 -->
+  <!-- <table *ngIf="rowList.length>0">
+      <thead>
+          <tr>
+              <th *ngFor="let item of rowList">{{item}} </th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let ii of colList">
+              <td *ngFor="let item of rowList">{{ii}} </td>
+          </tr>
+      </tbody>
+  </table> -->
+  <table>
+      <thead>
+          <tr *ngIf="head">
+              <th *ngFor="let item of head" (click)="OnItemClick.emit(item)">{{item}} </th>
+          </tr>
+      </thead>
+      <tbody *ngIf="data">
+          <tr *ngFor="let roo of data;let ro  = index">
+              <td *ngFor="let coo of data[ro]" (click)="OnItemClick.emit(coo)">
+                <span>
+                  <span *ngIf="coo.type === 'mix'">
+                    <i class="iconfont12 color-asc" *ngIf="coo.value.toString().indexOf('-')===-1 && (coo.value>0||coo.value.toString().indexOf('%')>-1)">&#58883;</i>
+                    <i class="iconfont12 color-dsc" *ngIf="coo.value.toString().indexOf('-')===0">&#58880;</i>
+                  </span>
+                  {{coo.value}}
+                </span>
+        
+              </td>
+          </tr>
+      </tbody>
+  </table>
+</div>

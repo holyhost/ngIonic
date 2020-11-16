@@ -1,0 +1,30 @@
+<ion-item class="item-about-annex item-no-lines">
+  <ion-avatar slot="start">
+    <div class="icon-box">
+      <img src="./assets/img/event_annex.png" class="event-type">
+    </div>
+    <!-- <img class="event-type"> -->
+  </ion-avatar>
+  <ion-label>
+    <input type="file" multiple="multiple" (change)="fileChange($event)" />
+  </ion-label>
+  <ion-chip slot="end" outline color="primary" *ngIf="editable" (click)="upClick()">
+    <ion-label color="primary">上传</ion-label>
+  </ion-chip>
+</ion-item>
+<ion-item class="inset" *ngFor="let item of files;let i = index" (click)="fileClick(item)">
+  <ion-avatar slot="start">
+    <div class="icon-box">
+      <img [src]="item.name | pftype" class="event-type">
+    </div>
+    <!-- <img class="event-type"> -->
+  </ion-avatar>
+  <ion-label>
+    <h2><span>{{item.name}}</span></h2>
+    <p>{{item.size | psize}} &nbsp; &nbsp;
+      <span style="float: right;" *ngIf="!item.status&&editable" class="type-no">未上传</span>
+      <span style="float: right;" *ngIf="item.status&&editable" class="type-up">已上传</span>
+    </p>
+  </ion-label>
+  <ion-img slot="end" style="width: 32px;height: 32px;" src="./assets/img/icon_remove.png" *ngIf="editable" (click)="removeFile(item.file)"></ion-img>
+</ion-item>

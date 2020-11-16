@@ -1,0 +1,33 @@
+
+<ion-toolbar class="my-toolbar" mode="ios" >
+  <ion-buttons slot="start" *ngIf="back" (click)="goback()">
+    <ion-icon class="ion-back" size="large"></ion-icon>
+  </ion-buttons>
+  <ion-buttons slot="primary" >
+    <ion-button *ngIf="more" (click)="onMore.emit()">
+      <!-- <ion-icon slot="icon-only" md="ellipsis-vertical"></ion-icon> -->
+      <ion-icon [class]="moreIcon" ></ion-icon>
+    </ion-button>
+    <ion-button (click)="showOption($event)">
+      <!-- <ion-icon slot="icon-only" md="ellipsis-vertical"></ion-icon> -->
+      <ion-icon class="ion-menu" style="font-size: 28px;"></ion-icon>
+    </ion-button>
+
+  </ion-buttons>
+  <ion-title (click)="onTitleClick()" style="font-size: 18px; font-weight: bold;">{{title}}</ion-title>
+</ion-toolbar>
+<!-- 标题下面的背景颜色 -->
+<!-- <div class="for-bg"></div> -->
+
+<div class="nav-content" *ngIf="navigate&&operations.length>0">
+  <div id="nav2" style="background-color: #4783e2;border-top:solid white 1px">
+    <ul style="justify-content: flex-start;">
+        <!--需要默认展示的a标签添加类-->
+        <li ><a>最近操作:></a></li>
+        <li 
+        *ngFor="let item of operations"
+        (click)="onOperationsItemClick(item)"><a class="a-b-border">{{item.value}}</a></li>
+
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<ion-content *ngIf="data&&data.length>0">
+    <ion-list>
+        <div class="card-container" *ngFor="let item of data;let idx = index">
+          <ion-item style="width: 100%;" lines="none">
+          
+              <ion-label class="ion-text-wrap">
+                  <ion-text [color]="item.selected?'primary':'medium'" (click)="select(idx)">
+                      {{item.value}}
+                  </ion-text>
+                </ion-label>
+                <ion-badge slot="end"
+                *ngIf="multy" 
+                [color]="getSelectItemsCount(item)>0?'primary':'medium'">
+                    {{getSelectItemsCount(item)}}
+                  </ion-badge>
+                <ion-badge slot="end"
+                *ngIf="!multy&&item.childs.includes(lastSelectedItem)" color="primary">
+                    {{lastSelectedItem.value}}
+                  </ion-badge>
+              <!-- <i class="iconfont12 color-blue" slot='start'>&#59535;</i> -->
+              <i class="iconfont22 color-blue" slot='end' *ngIf="!item.selected" (click)="select(idx)">&#60280;</i>
+              <i class="iconfont22 color-blue" slot='end' *ngIf="item.selected" (click)="select(idx)">&#60279;</i>
+  
+            </ion-item>
+            <div *ngIf="item.selected&&item.childs.length>0">
+              <ion-chip 
+                  *ngFor="let it of item.childs;let idx2 = index" 
+                  (click)="selectItem(idx, idx2)"
+                  outline [color]="it.selected?'primary':'medium'">
+                  <i class="iconfont12 color-blue" *ngIf="it.selected">&#59535;</i>
+                  <i class="iconfont12 color-blue" *ngIf="!it.selected">&nbsp;&nbsp;</i>
+                  <ion-label>{{it.value}}</ion-label>
+                </ion-chip>
+            </div>
+        </div>
+        
+
+    </ion-list>
+
+</ion-content>

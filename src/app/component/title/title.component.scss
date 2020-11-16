@@ -1,0 +1,113 @@
+ion-toolbar{
+	--background: cornflowerblue;
+	--color: #fff;
+}
+
+ion-button{
+	--color: #fff;
+}
+.for-bg:after {
+	content: '';
+	width: 120%;
+	height: 8.5rem;
+	position: absolute;
+	left: -10%;     //椭圆左边隐藏10%，右边隐藏10%
+	top: -10px;
+	border-radius: 0 0 50% 50%;  //左上角，右上角，右下角，左下角
+	// background: var(--ion-color-primary);
+	//为了使用沉侵式状态栏。统一颜色
+	background: #4783e2;
+  }
+
+/* 导航栏 */
+.nav-content{
+	position: relative;
+	border-bottom: 1px solid #ccc;
+}
+.nav-content #nav{
+	width: auto;
+	text-align: center;
+	background-color: #fff;
+	line-height: 36px;
+	padding-left: 10px;
+	padding-right: 10px;
+	ul{
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		overflow-x: scroll;
+		justify-content: space-between;
+		li{
+			// float: left;
+			// width: 19.9%;
+			flex-shrink: 0;
+  			white-space: nowrap;
+			display: inline-block;
+			margin-left: 1rem;
+			a{
+				color: #111;
+				line-height: 35px;
+			}
+		}
+		li:nth-child(4){
+			a{
+				display: block;
+				position: relative;
+				color: #4783e2 !important;
+				// border-bottom: #207BFC solid 1px;
+			}
+			a:after{
+				content: "";
+				width: 2rem;
+				height: 2px;
+				position: absolute;
+				top: 35px;
+				left: calc(50% - 1rem );
+				border-radius: 2px;
+				background: var(--ion-color-primary);
+			}
+		}
+		li:last-child{
+			padding-right: 1rem;
+		}
+	}
+	ul::-webkit-scrollbar {
+		display: none; /* Chrome Safari */
+	}
+	
+
+}
+.nav-content #nav2{
+	width: auto;
+	text-align: center;
+	background-color: #fff;
+	line-height: 36px;
+	padding-left: 10px;
+	padding-right: 10px;
+	ul{
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		overflow-x: scroll;
+		justify-content: space-between;
+		li{
+			flex-shrink: 0;
+  			white-space: nowrap;
+			display: inline-block;
+			margin-left: 1rem;
+			// text-decoration:underline
+			a{
+				color: white;
+				line-height: 35px;
+			}
+		}
+	}
+	ul::-webkit-scrollbar {
+		display: none; /* Chrome Safari */
+	}
+	
+
+}
+.a-b-border{
+	border-bottom: solid white 1px;
+}
