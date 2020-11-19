@@ -1,0 +1,16 @@
+.wrapper {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    margin: 5px 8px;
+}
+.wrapper .line {
+    flex-grow: 1;
+    height: 0.5px;
+    background: #ddd;
+}
+.wrapper .content {
+    color: #ccc;
+    font-size: 14px;
+    white-space: nowrap;
+}

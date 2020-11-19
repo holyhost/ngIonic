@@ -5,6 +5,8 @@ import { map, catchError, timeout, finalize, } from 'rxjs/internal/operators';
 import { IonService } from './ion.servic';
 import { BaseBean } from './data-type/base.type';
 import { Utils } from './utils';
+import { Story } from './data-type/story.zhihu.type';
+import { of } from 'rxjs';
 
 
 
@@ -35,5 +37,24 @@ export class HttpService {
     )
   }
 
+  /**
+   * 加载知乎每日的推荐数据
+   * @param date 时间
+   */
+  loadZhihuNews(date:string='20201111'){
+    console.log("时间是："+date)
+    if(Number.parseInt(date)<20201116){
+      return of([])
+    }
+    return this.http.get('zhihu/before/'+date).pipe(
+      map((res:{date:string,stories:Story[]})=>res.stories)
+    )
+  }
+
+  getStoryDetail(id: number){
+    console.log("文章id："+id)
+    return this.http.get('zhihu/'+id)
+
+  }
 
 }

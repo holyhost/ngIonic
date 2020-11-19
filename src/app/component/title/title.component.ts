@@ -10,7 +10,7 @@ import { BaseBean } from 'src/app/services/data-type/base.type';
 })
 export class TitleComponent implements OnInit,OnDestroy {
 
-  @Input() title:string="多维分析";//标题
+  @Input() title:string="标题";//标题
   @Input() back:boolean=true;//是否可以返回
   @Input() tab:boolean=false;//是否显示导航
   @Input() navigate:boolean=true;//是否记录导航
@@ -61,7 +61,9 @@ export class TitleComponent implements OnInit,OnDestroy {
 
   }
   goback(){
-    this.nav.back();
+    if(this.back){
+      this.nav.back();
+    }
   }
 
   onTitleClick(){

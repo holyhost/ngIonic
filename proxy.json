@@ -1,0 +1,13 @@
+{
+    "/zhihu": {
+        "target":"https://news-at.zhihu.com/api/4/news",
+        "secure":false,
+        "changeOrigin":true,
+        "ws":true,
+        "pathRewrite":{
+            "^/zhihu":"/"
+        }
+    }
+    
+}
+    

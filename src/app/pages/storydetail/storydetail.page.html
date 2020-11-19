@@ -1,0 +1,12 @@
+<app-title [title]="title"></app-title>
+<ion-content >
+
+    <ion-label *ngIf="!title&&title.length<1">
+        出错啦
+    </ion-label>
+    <!-- <pre *ngIf="detail">{{detail}}</pre> -->
+
+    <div id="bodyContainer">
+
+    </div>
+</ion-content>

@@ -40,4 +40,13 @@ export const Production= [
         cate:'page',//类型-图标介绍
         path:'zztable',//案由
     },
+    {
+        title:'通用列表',
+        icon:'./assets/img/icon_file_default.png',
+        content:'下拉刷新，上拉加载更多等',
+        subtitle:'',
+        updateTime:'2020-11-16',
+        cate:'page',//类型-图标介绍
+        path:'listview',//案由
+    },
 ]

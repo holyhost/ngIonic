@@ -9,6 +9,7 @@ import { FileTypePipe } from '../pipes/filetype.pipe';
 import { ZzTableComponent } from './zztable/zztable.component';
 import { Menu2Component } from './menu2/menu2.component';
 import { PpModule } from '../pipes/pp.module';
+import { BottomComponent } from './bottom/bottom.component';
 
 
 
@@ -19,6 +20,7 @@ import { PpModule } from '../pipes/pp.module';
     FileTypePipe,
     ZzTableComponent,
     Menu2Component,
+    BottomComponent,
     FileChooseComponent],
   imports: [
     IonicModule,
@@ -31,6 +33,7 @@ import { PpModule } from '../pipes/pp.module';
     FileTypePipe,
     ZzTableComponent,
     Menu2Component,
+    BottomComponent,
     TitleComponent,FileChooseComponent,CommonModule,IonicModule,FormsModule
   ]
 })

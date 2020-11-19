@@ -28,7 +28,7 @@ export class IonService {
     this.loading = await this.loadingController.create({
       spinner: 'bubbles',
       message: message,
-    duration: 8000,
+      duration: 8000,
       backdropDismiss: true
     });
     this.loading.present();

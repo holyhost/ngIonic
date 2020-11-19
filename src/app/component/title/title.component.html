@@ -1,7 +1,7 @@
 
 <ion-toolbar class="my-toolbar" mode="ios" >
   <ion-buttons slot="start" *ngIf="back" (click)="goback()">
-    <ion-icon class="ion-back" size="large"></ion-icon>
+    <ion-icon name="chevron-back-outline" style="font-size: 22px;"></ion-icon>
   </ion-buttons>
   <ion-buttons slot="primary" >
     <ion-button *ngIf="more" (click)="onMore.emit()">
