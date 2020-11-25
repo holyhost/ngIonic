@@ -12,6 +12,14 @@ const routes: Routes = [
     path: 'listview',
     loadChildren: ()=>import('../pages/listview/listview.module').then(m=>m.ListViewPageModule)
   },
+  {
+    path: 'zztable',
+    loadChildren: ()=>import('../pages/example/e-table/e-table.module').then(m=>m.ETablePageModule)
+  },
+  {
+    path: 'filechoose',
+    loadChildren: ()=>import('../pages/example/e-filechoose/e-filechoose.module').then(m=>m.EFileChoosePageModule)
+  },
 ];
 
 @NgModule({

@@ -41,7 +41,12 @@ export class ZzTableComponent implements OnInit, OnDestroy {
         for (let i = 0; i < 30; i++) {
           this.data.push([])
           for (let j = 0; j < 10; j++) {
-            this.data[i][j] = new ZzTableBean(i+''+j,i+'---'+j)
+            if(j%2 === 0){
+              this.data[i][j] = new ZzTableBean(i+''+j,(i-j)+"",false,'mix','red')
+            }else{
+              this.data[i][j] = new ZzTableBean(i+''+j,i+'---'+j,false,'text','blue')
+            }
+            
             
           }
           

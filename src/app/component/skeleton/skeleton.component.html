@@ -1,0 +1,19 @@
+<ion-content *ngIf="show">
+  <ion-list *ngIf="data&&data.length>0">
+
+    <ion-item *ngFor="let item of data">
+      <ion-skeleton-text animated style="width: 56px; height: 56px" slot="start"></ion-skeleton-text>
+      <ion-label>
+        <h3>
+          <ion-skeleton-text animated  [ngStyle]="{'width': 40*(1+item)+'%'}" ></ion-skeleton-text>
+        </h3>
+        <p>
+          <ion-skeleton-text animated [ngStyle]="{'width': 50*(1+item)+'%'}"></ion-skeleton-text>
+        </p>
+        <p>
+          <ion-skeleton-text animated [ngStyle]="{'width': 44*(1+item)+'%'}"></ion-skeleton-text>
+        </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

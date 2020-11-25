@@ -1,6 +1,9 @@
+<!-- 标题位置 -->
 <app-title title="知乎日报" [back]='true'></app-title>
+<!-- 列表内容主体 -->
 <ion-content>
 
+  <!-- 下来刷新控件 -->
     <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
       <ion-refresher-content
         pullingIcon="chevron-down-circle-outline"
@@ -9,7 +12,7 @@
         refreshingText="刷新中...">
       </ion-refresher-content>
     </ion-refresher>
-  
+  <!-- 数据列表 -->
     <ion-list *ngIf="data&&data.length>0" >
         <ion-item *ngFor="let item of data" (click)="onItemClick(item)">
             <ion-label>
@@ -22,7 +25,9 @@
         </ion-item>
 
     </ion-list>
-  
+    <app-skeleton *ngIf="!data || data.length<1"></app-skeleton>
+
+  <!-- 上来加载更多控件 -->
     <ion-infinite-scroll #IonInfiniteScroll threshold="100px" (ionInfinite)="onMoreData($event)">
       <ion-infinite-scroll-content
         loadingSpinner="bubbles"
@@ -31,4 +36,5 @@
     </ion-infinite-scroll>
     <app-bottom *ngIf="infiniteScroll&&infiniteScroll.disabled"></app-bottom>
     <ion-button *ngIf="!data|| data.length<10" (click)="onMoreData(null)">加载更多数据</ion-button>
+
   </ion-content>

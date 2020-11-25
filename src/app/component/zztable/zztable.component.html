@@ -21,7 +21,7 @@
       <tbody *ngIf="data">
           <tr *ngFor="let roo of data;let ro  = index">
               <td *ngFor="let coo of data[ro]" (click)="OnItemClick.emit(coo)">
-                <span>
+                <span [ngStyle]="{'color':coo.color}">
                   <span *ngIf="coo.type === 'mix'">
                     <i class="iconfont12 color-asc" *ngIf="coo.value.toString().indexOf('-')===-1 && (coo.value>0||coo.value.toString().indexOf('%')>-1)">&#58883;</i>
                     <i class="iconfont12 color-dsc" *ngIf="coo.value.toString().indexOf('-')===0">&#58880;</i>

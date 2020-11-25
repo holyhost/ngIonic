@@ -6,7 +6,8 @@ import { IonService } from './ion.servic';
 import { BaseBean } from './data-type/base.type';
 import { Utils } from './utils';
 import { Story } from './data-type/story.zhihu.type';
-import { of } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { FileInfoBean } from './data-type/fileinfo.type';
 
 
 
@@ -55,6 +56,19 @@ export class HttpService {
     console.log("文章id："+id)
     return this.http.get('zhihu/'+id)
 
+  }
+
+   /**
+   * 上传文件
+   */
+  uploadFile(file:File,showLoading=true):any{
+    let url = 'upload_file';
+    let formData:FormData = new FormData();
+    formData.append('files', file);
+    let headers = new Headers();
+    //  headers.append('Content-Type','multipart/form-data');
+    formData.append('uploadSystem',"qaq");
+    return this.http.post(url,formData,null).pipe()
   }
 
 }

@@ -20,7 +20,7 @@ export const Production= [
         subtitle:'',
         updateTime:'2020-11-16',
         cate:'page',//类型-图标介绍
-        path:'zztable',//案由
+        path:'filechoose',//案由
     },
     {
         title:'二级菜单',

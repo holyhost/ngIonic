@@ -34,7 +34,9 @@ export class ListViewPage implements OnInit {
   ngOnInit(): void {
 
     this.date = this.util.dateFormat(new Date(), 'yyyyMMdd')
-    this.loadData(true, true, this.date)
+    setTimeout(() => {
+    this.loadData(true, false, this.date)
+    }, 2000);
 
   }
 
@@ -65,7 +67,7 @@ export class ListViewPage implements OnInit {
           this.data = []
         }
         this.data = this.data.concat(res)
-      }else{
+      }else if(this.data.length>10){
         this.toggleInfiniteScroll()
       }
 

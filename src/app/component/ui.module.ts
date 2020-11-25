@@ -10,6 +10,8 @@ import { ZzTableComponent } from './zztable/zztable.component';
 import { Menu2Component } from './menu2/menu2.component';
 import { PpModule } from '../pipes/pp.module';
 import { BottomComponent } from './bottom/bottom.component';
+import { NoinfoComponent } from './noinfo/noinfo.component';
+import { SkeletonComponent } from './skeleton/skeleton.component';
 
 
 
@@ -21,6 +23,8 @@ import { BottomComponent } from './bottom/bottom.component';
     ZzTableComponent,
     Menu2Component,
     BottomComponent,
+    NoinfoComponent,
+    SkeletonComponent,
     FileChooseComponent],
   imports: [
     IonicModule,
@@ -33,6 +37,8 @@ import { BottomComponent } from './bottom/bottom.component';
     FileTypePipe,
     ZzTableComponent,
     Menu2Component,
+    NoinfoComponent,
+    SkeletonComponent,
     BottomComponent,
     TitleComponent,FileChooseComponent,CommonModule,IonicModule,FormsModule
   ]
