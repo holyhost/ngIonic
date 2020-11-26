@@ -1,0 +1,23 @@
+<app-title title="标题控件"></app-title>
+<div class="top20"></div>
+<ion-content>
+
+    <app-title  title="不带返回" [back]="false"></app-title>
+    <div class="top20"></div>
+    <app-title  title="带返回" [back]="true"></app-title>
+    <div class="top20"></div>
+    <app-title  title="右边一个图标"  [back]="false"></app-title>
+    <div class="top20"></div>
+    <app-title  title="右边无图标" [right]='false' [back]="false"></app-title>
+    <div class="top20"></div>
+    <app-title  title="右边两个图标" [more]="true" [right]="true" [back]="false" (onMore)="onMoreIconClick()"></app-title>
+    <div class="top20"></div>
+    <app-title  title="更换图标" [more]="true" moreIcon="build" [right]="true" [back]="false" (onMore)="onMoreIconClick()"></app-title>
+    <div class="top20"></div>
+
+
+</ion-content>
+
+
+
+

@@ -7,6 +7,22 @@ import { Component } from '@angular/core';
 })
 export class Tab3Page {
 
-  constructor() {}
+  constructor() {
+    let aa = new Object()
+    console.log(Object.keys(aa))
+    let map = new Map<string,string>()
+    for (let index = 0; index < 10; index++) {
+      
+      map.set(index +"a","colName"+index)
+      aa['a'+index] = "colName"+index
+    }
+    
+    console.log(map)
+    console.log(aa)
+    
+
+  }
+
+
 
 }

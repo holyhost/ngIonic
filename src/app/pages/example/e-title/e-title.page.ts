@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { IonService } from 'src/app/services/ion.servic';
 
 /**
  * 标题示例界面
@@ -13,7 +14,7 @@ export class ETitlePage implements OnInit{
 
   
   constructor(
-
+    private ion: IonService
   ) {
     
   }
@@ -23,4 +24,8 @@ export class ETitlePage implements OnInit{
 
   }
 
+
+  onMoreIconClick(){
+    this.ion.toast("点击了右边第二个图标")
+  }
 }

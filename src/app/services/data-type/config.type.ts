@@ -11,7 +11,7 @@ export const Production= [
         subtitle:'',
         updateTime:'2020-11-16',
         cate:'page',//类型-图标介绍
-        path:'zztable',//案由
+        path:'title',//案由
     },
     {
         title:'文件选择',
@@ -29,7 +29,7 @@ export const Production= [
         subtitle:'',
         updateTime:'2020-11-16',
         cate:'page',//类型-图标介绍
-        path:'zztable',//案由
+        path:'menu2',//案由
     },
     {
         title:'首行首列固定表格',
