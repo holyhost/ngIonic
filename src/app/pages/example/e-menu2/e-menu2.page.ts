@@ -1,26 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { forkJoin, Observable } from 'rxjs';
-import { FileChooseComponent } from 'src/app/component/filechoose/filechoose.component';
-import { FileInfoBean } from 'src/app/services/data-type/fileinfo.type';
+import { MenuItemBean } from 'src/app/component/menu2/menu.type';
 import { HttpService } from 'src/app/services/http.service';
 import { IonService } from 'src/app/services/ion.servic';
-export class FileInfo{
-  file:File;
-  name:string;
-  size:number;
-  type:string;
-  url:string;
-  code:string;
-  status:boolean=false;
-  lastModified:number;
-  constructor(f:File){
-    this.file = f;
-    this.name = f.name;
-    this.size = f.size;
-    this.lastModified = f.lastModified;
-    this.type = f.type;
-  }
-}
+
 
 /**
  * 文件选择案例界面
@@ -33,13 +15,31 @@ export class FileInfo{
 })
 export class EMenu2Page implements OnInit{
   
-  @ViewChild('filechoose',{static: false}) filechoose:FileChooseComponent;
+ 
+  listData: MenuItemBean[] = []//社区列表
+
   
   constructor(
-    private ion: IonService,
-    private http: HttpService,
+
   ) {
-    
+    this.initListData();
+  }
+
+  //初始化基础数据
+  initListData(){
+    // 清空列表
+    this.listData = [];
+    for(let i=1;i<10;i++){
+      //创建一个父级
+      let parent = new MenuItemBean(i+"",i+"号大树")
+      parent.childs = []
+      for(let child = 1;child<20;child++){
+        let bean = new MenuItemBean(i+"--"+child,i+"号大树的儿子"+child)
+        parent.childs.push(bean)
+      }
+      this.listData.push(parent)
+    }
+
   }
 
   ngOnInit(): void {

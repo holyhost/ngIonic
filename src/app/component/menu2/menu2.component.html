@@ -1,10 +1,10 @@
 <ion-content *ngIf="data&&data.length>0">
     <ion-list>
         <div class="card-container" *ngFor="let item of data;let idx = index">
-          <ion-item style="width: 100%;" lines="none">
+          <ion-item style="width: 100%;" lines="none" (click)="select(idx)">
           
               <ion-label class="ion-text-wrap">
-                  <ion-text [color]="item.selected?'primary':'medium'" (click)="select(idx)">
+                  <ion-text [color]="item.selected?'primary':'medium'" >
                       {{item.value}}
                   </ion-text>
                 </ion-label>
@@ -18,17 +18,17 @@
                     {{lastSelectedItem.value}}
                   </ion-badge>
               <!-- <i class="iconfont12 color-blue" slot='start'>&#59535;</i> -->
-              <i class="iconfont22 color-blue" slot='end' *ngIf="!item.selected" (click)="select(idx)">&#60280;</i>
-              <i class="iconfont22 color-blue" slot='end' *ngIf="item.selected" (click)="select(idx)">&#60279;</i>
-  
+              <ion-icon name="chevron-forward-outline" slot='end' *ngIf="!item.selected" ></ion-icon>
+              <ion-icon name="chevron-down-outline" slot='end' *ngIf="item.selected" ></ion-icon>
+            
             </ion-item>
             <div *ngIf="item.selected&&item.childs.length>0">
               <ion-chip 
                   *ngFor="let it of item.childs;let idx2 = index" 
                   (click)="selectItem(idx, idx2)"
                   outline [color]="it.selected?'primary':'medium'">
-                  <i class="iconfont12 color-blue" *ngIf="it.selected">&#59535;</i>
-                  <i class="iconfont12 color-blue" *ngIf="!it.selected">&nbsp;&nbsp;</i>
+       
+                  <ion-icon name="checkmark-outline" *ngIf="it.selected"></ion-icon>
                   <ion-label>{{it.value}}</ion-label>
                 </ion-chip>
             </div>
