@@ -1,17 +1,25 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
 
+<app-title title="设置" [back]='false' [right]="false"></app-title>
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-list>
+    <ion-list-header>
+      主题设置
+    </ion-list-header>
+    <ion-radio-group [value]="themes[0].key" (ionChange)="onThemeChange($event)">
+      <ion-item *ngFor="let entry of themes">
+        <ion-label>{{entry.value}}</ion-label>
+        <ion-radio [value]="entry.key" slot="end" [color]="entry.color"></ion-radio >
+      </ion-item>
+    </ion-radio-group>
 
-  <app-noinfo></app-noinfo>
+    <ion-button (click)="getCurTheme()" expand="block">确认主题</ion-button>
+
+    <ion-list-header>
+      效果展示
+    </ion-list-header>
+    <div class="adiv">
+      Hello ,world ,this---s-asdf拉的屎；了爱上了短发啦水电费； 阿道夫
+    </div>
+  </ion-list>
+  <!-- <app-noinfo></app-noinfo> -->
 </ion-content>

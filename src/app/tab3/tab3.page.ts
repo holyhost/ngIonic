@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { BaseBean } from '../services/data-type/base.type';
+import { ThemeService } from '../services/theme.service';
 
 @Component({
   selector: 'app-tab3',
@@ -7,22 +9,45 @@ import { Component } from '@angular/core';
 })
 export class Tab3Page {
 
-  constructor() {
-    let aa = new Object()
-    console.log(Object.keys(aa))
-    let map = new Map<string,string>()
-    for (let index = 0; index < 10; index++) {
-      
-      map.set(index +"a","colName"+index)
-      aa['a'+index] = "colName"+index
-    }
-    
-    console.log(map)
-    console.log(aa)
-    
 
+  themes: BaseBean[]= [
+    new BaseBean('dark','橙色',true,'warning'),
+    new BaseBean('contrast','红色',false,'danger'),
+    new BaseBean('light','绿色',false,'success'),
+  ]
+
+  constructor(private theme: ThemeService) {
+
+    if(this.theme.curTheme){
+      console.log("默认的颜色是："+this.theme.curTheme)
+      this.themes.forEach(item=>{
+        if(item.key === this.theme.curTheme){
+          item.selected = true
+        }else{
+          item.selected = false
+        }
+      })
+    }
+    console.log(this.themes)
   }
 
+  getCurTheme(){
+    let theme = '';
+    this.themes.forEach(item=>item.selected&&(theme = item.key))
+    this.theme.changeTheme(theme)
+  }
+
+  onThemeChange(event){
+
+    let akey = event.detail.value
+    this.themes.forEach(item=>{
+      if(item.key === akey){
+        item.selected = true
+      }else{
+        item.selected = false
+      }
+    })
+  }
 
 
 }

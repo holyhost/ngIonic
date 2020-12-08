@@ -1,0 +1,71 @@
+@import './base.scss';
+
+//一整套
+@mixin def-theme() {
+    // 可以考虑用for循环生成
+    // 橙色主题
+    :host-context([theme-style='dark']) & {
+        --ion-color-primary: #e77000;
+        --ion-color-primary-rgb: 73,253,241;
+        --ion-color-primary-contrast: #000000;
+        --ion-color-primary-contrast-rgb: 0,0,0;
+        --ion-color-primary-shade: #40dfd4;
+        --ion-color-primary-tint: #5bfdf2;
+        --color: #3f5;
+        color: #3f5;
+      
+    }
+    // 绿色主题
+    :host-context([theme-style='light']) & {
+        --ion-color-primary: #6fe42f;
+        --ion-color-primary-rgb: 111,228,47;
+        --ion-color-primary-contrast: #000000;
+        --ion-color-primary-contrast-rgb: 0,0,0;
+        --ion-color-primary-shade: #62c929;
+        --ion-color-primary-tint: #7de744;
+        --color: #666666;
+        color: #666666;
+    }
+    // 红色主题
+    :host-context([theme-style='contrast']) & {
+        --ion-color-primary: #e60a18;
+        --ion-color-primary-rgb: 230,10,24;
+        --ion-color-primary-contrast: #ffffff;
+        --ion-color-primary-contrast-rgb: 255,255,255;
+        --ion-color-primary-shade: #ca0915;
+        --ion-color-primary-tint: #e9232f;
+        --color: #ccc;
+        color: #ccc;
+    }
+   
+}
+
+// 单独设置 背景颜色
+@mixin bg_color() {
+    :host-context([theme-style='dark']) & {
+        background-color: $dark;
+    }
+    :host-context([theme-style='light']) & {
+        background-color: $light;
+    }
+}
+
+// 单独设置 字体颜色
+@mixin font_color() {
+    :host-context([theme-style='dark']) & {
+        color: $dark-color;
+    }
+    :host-context([theme-style='light']) & {
+        color: $light-color;
+    }
+}
+// 单独设置 边框颜色
+@mixin border_color(){
+    :host-context([theme-style='dark']) & {
+        border: solid 2px $dark;
+    }
+
+    :host-context([theme-style='light']) & {
+        border: solid 2px $light;
+    }
+}

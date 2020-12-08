@@ -1,3 +1,6 @@
+
+@import "../../theme/theme.scss";
+
 .icon-box{
     // background-color: red;
     height: 100%;
@@ -10,4 +13,9 @@
         width: 1.4rem;
         height: 1.4rem;
     }
+}
+
+
+.adiv{
+    @include def-theme();
 }
