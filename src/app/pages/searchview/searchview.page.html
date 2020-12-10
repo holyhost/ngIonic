@@ -1,0 +1,18 @@
+<!-- 标题位置 -->
+<app-title title="搜索" [back]='true'></app-title>
+<!-- 列表内容主体 -->
+<ion-content>
+
+ 
+  <div class="searche-box">
+    <svg t="1607500396901" class="search-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1324" width="121" height="121"><path d="M400.696889 801.393778A400.668444 400.668444 0 1 1 400.696889 0a400.668444 400.668444 0 0 1 0 801.393778z m0-89.031111a311.637333 311.637333 0 1 0 0-623.331556 311.637333 311.637333 0 0 0 0 623.331556z" fill="#8a8a8a" p-id="1325"></path><path d="M667.904 601.998222l314.766222 314.823111-62.919111 62.976-314.823111-314.823111z" fill="#8a8a8a" p-id="1326"></path></svg>
+    <div class="search-input">
+      <input maxlength="5" name="keyword" type="text" cleardefault="no" autocomplete="off" placeholder="请输入关键字" [ngModel]="keyword" (ngModelChange)="onSearchClick($event)">
+    </div>
+    <input class="searche-button" type="button" name="search" value="搜索" (click)="onSearchClick()">
+  </div>
+
+  <ion-item *ngFor="let i of [1,1,1,1,1,1,1,1,1,1,1,1,11,1,1,1,1,1,1,1,1,1,1]">
+    <ion-label>hello worl</ion-label>
+  </ion-item>
+</ion-content>

@@ -7,7 +7,7 @@ import { IonService } from 'src/app/services/ion.servic';
 import { Utils } from 'src/app/services/utils';
 
 /**
- * 分类统计界面
+ * 列表
  */
 
 @Component({

@@ -49,4 +49,13 @@ export const Production= [
         cate:'page',//类型-图标介绍
         path:'listview',//案由
     },
+    {
+        title:'搜索列表',
+        icon:'./assets/img/icon_file_default.png',
+        content:'搜索框，条件搜索',
+        subtitle:'',
+        updateTime:'2020-12-09',
+        cate:'page',//类型-图标介绍
+        path:'searchview',//案由
+    },
 ]

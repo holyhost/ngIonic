@@ -13,6 +13,10 @@ const routes: Routes = [
     loadChildren: ()=>import('../pages/listview/listview.module').then(m=>m.ListViewPageModule)
   },
   {
+    path: 'searchview',
+    loadChildren: ()=>import('../pages/searchview/searchview.module').then(m=>m.SearchViewPageModule)
+  },
+  {
     path: 'zztable',
     loadChildren: ()=>import('../pages/example/e-table/e-table.module').then(m=>m.ETablePageModule)
   },
