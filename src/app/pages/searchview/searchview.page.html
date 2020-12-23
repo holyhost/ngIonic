@@ -3,13 +3,53 @@
 <!-- 列表内容主体 -->
 <ion-content>
 
- 
+ <!-- 搜索框 -->
   <div class="searche-box">
     <svg t="1607500396901" class="search-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1324" width="121" height="121"><path d="M400.696889 801.393778A400.668444 400.668444 0 1 1 400.696889 0a400.668444 400.668444 0 0 1 0 801.393778z m0-89.031111a311.637333 311.637333 0 1 0 0-623.331556 311.637333 311.637333 0 0 0 0 623.331556z" fill="#8a8a8a" p-id="1325"></path><path d="M667.904 601.998222l314.766222 314.823111-62.919111 62.976-314.823111-314.823111z" fill="#8a8a8a" p-id="1326"></path></svg>
+
     <div class="search-input">
-      <input maxlength="5" name="keyword" type="text" cleardefault="no" autocomplete="off" placeholder="请输入关键字" [ngModel]="keyword" (ngModelChange)="onSearchClick($event)">
+      <input maxlength="10" name="keyword" type="text" cleardefault="no" autocomplete="off" placeholder="请输入关键字" [ngModel]="keyword" (ngModelChange)="onSearchClick($event)">
     </div>
     <input class="searche-button" type="button" name="search" value="搜索" (click)="onSearchClick()">
+  </div>
+  <!-- 条件选择盒子 -->
+  <div class="filter-box" *ngIf="sortList">
+    <div class="pro_filter">
+      <div class="pro_filter_items">
+        <span class="pf_item" *ngFor="let item of sortList" (click)="onSearchTypeClick(item)">
+          <span [ngClass]="{'selected-color':item.selected}">{{item.value}}</span>
+          <!-- 菜单用这个 -->
+          <svg *ngIf="(item.type===101|| item.type ===102)&&item.selected" t="1607586139665" class="sort_icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4367" width="32" height="32"><path d="M901.3 953.50599997c46.365 0 72.696-61.253 38.931-95.029L550.973 469.22099997c-22.322-22.322-55.522-22.322-77.854 0L83.881 858.48899997c-34.645 34.646-5.72 95.028 39.496 95.028l777.922-0.011z" p-id="4368" fill="#cccccc"></path></svg>
+          <svg *ngIf="(item.type===101|| item.type ===102)&&!item.selected" t="1607587468451" class="sort_icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4748" width="32" height="32"><path d="M122.7 262.494c-46.365 0-72.696 61.253-38.931 95.029L473.027 746.779c22.322 22.322 55.522 22.32199999 77.854 0L940.119 357.51100001c34.645-34.64600001 5.72-95.028-39.496-95.02800002l-777.922 0.01100001z" p-id="4749" fill="#cccccc"></path></svg>
+          <!-- 上升下降用这个 -->
+          <svg *ngIf="(item.type===104)&&item.selected" t="1607589885342" class="sort_icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15829" width="32" height="32"><path d="M717.824 965.688889c0 16.497778-13.368889 29.866667-29.866667 29.866667H336.042667c-16.497778 0-29.866667-13.368889-29.866667-29.866667V512.028444H128.739556a29.866667 29.866667 0 0 1-22.129778-49.92L489.870222 38.769778a29.866667 29.866667 0 0 1 44.259556 0l383.260444 423.338666a29.866667 29.866667 0 0 1-22.129778 49.92h-177.436444V965.688889z" p-id="15830" fill="#cccccc"></path></svg>
+          <svg *ngIf="(item.type===104)&&item.selected" t="1607589909327" class="sort_icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="16018" width="32" height="32"><path d="M306.176 58.311c0-16.49800001 13.369-29.867 29.867-29.867L687.957 28.444c16.49800001 0 29.867 13.37 29.867 29.867l0 453.66L895.26 511.971a29.867 29.867 0 0 1 22.13000001 49.92l-383.26000001 423.34a29.867 29.867 0 0 1-44.26 0l-383.26000001-423.34a29.867 29.867 0 0 1 22.13000001-49.92L306.176 511.971l0-453.66z" p-id="16019" fill="#cccccc"></path></svg>
+        </span>
+      </div>
+    </div>
+    <div class="pro_filter_more">
+
+      <ul class="show_more">
+        <li class="item" *ngFor="let item of sortMoreList; let i=index" (click)="onSortMoreItemClick(item)">
+          <span [ngClass]="{'selected':item.selected,'pf_item':!item.selected}">
+          {{item.value}}
+          <!-- <svg t="1607586139665" class="sort_icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4367" width="32" height="32"><path d="M901.3 953.50599997c46.365 0 72.696-61.253 38.931-95.029L550.973 469.22099997c-22.322-22.322-55.522-22.322-77.854 0L83.881 858.48899997c-34.645 34.646-5.72 95.028 39.496 95.028l777.922-0.011z" p-id="4368" fill="#cccccc"></path></svg> -->
+          <svg t="1607587468451" class="sort_icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4748" width="32" height="32"><path d="M122.7 262.494c-46.365 0-72.696 61.253-38.931 95.029L473.027 746.779c22.322 22.322 55.522 22.32199999 77.854 0L940.119 357.51100001c34.645-34.64600001 5.72-95.028-39.496-95.02800002l-777.922 0.01100001z" p-id="4749" fill="#cccccc"></path></svg>
+        </span>
+        </li>
+       
+      </ul>
+    </div>
+    <div class="btns">
+
+      <div style="width: 50%;float: left;">
+          <ion-button expand="full">重置</ion-button>
+      </div>
+      <div style="width: 50%;float: left;">
+          <ion-button expand="full">确定</ion-button>
+      </div>
+      
+    </div>
   </div>
 
   <ion-item *ngFor="let i of [1,1,1,1,1,1,1,1,1,1,1,1,11,1,1,1,1,1,1,1,1,1,1]">

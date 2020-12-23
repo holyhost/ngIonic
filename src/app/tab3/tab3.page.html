@@ -5,7 +5,7 @@
     <ion-list-header>
       主题设置
     </ion-list-header>
-    <ion-radio-group [value]="themes[0].key" (ionChange)="onThemeChange($event)">
+    <ion-radio-group *ngIf="themes&&themes.length>0"  [value]="theme.curTheme" (ionChange)="onThemeChange($event)">
       <ion-item *ngFor="let entry of themes">
         <ion-label>{{entry.value}}</ion-label>
         <ion-radio [value]="entry.key" slot="end" [color]="entry.color"></ion-radio >

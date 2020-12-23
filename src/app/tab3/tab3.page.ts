@@ -10,24 +10,26 @@ import { ThemeService } from '../services/theme.service';
 export class Tab3Page {
 
 
-  themes: BaseBean[]= [
-    new BaseBean('dark','橙色',true,'warning'),
-    new BaseBean('contrast','红色',false,'danger'),
-    new BaseBean('light','绿色',false,'success'),
-  ]
+  themes: BaseBean[]= []
 
   constructor(private theme: ThemeService) {
-
+    let tempData =  [
+      new BaseBean('dark','橙色',true,'warning'),
+      new BaseBean('contrast','红色',false,'danger'),
+      new BaseBean('light','绿色',false,'success'),
+    ]
     if(this.theme.curTheme){
-      console.log("默认的颜色是："+this.theme.curTheme)
-      this.themes.forEach(item=>{
+      
+      tempData.forEach(item=>{
         if(item.key === this.theme.curTheme){
           item.selected = true
+          console.log("默认的颜色是："+this.theme.curTheme+"--"+item.value)
         }else{
           item.selected = false
         }
       })
     }
+    this.themes = tempData
     console.log(this.themes)
   }
 
