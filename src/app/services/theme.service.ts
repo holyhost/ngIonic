@@ -18,6 +18,7 @@ export class ThemeService {
     contrast: 'contrast',
   }
   constructor() {
+    console.log("themeService初始化")
     this.initTheme();
    }
 

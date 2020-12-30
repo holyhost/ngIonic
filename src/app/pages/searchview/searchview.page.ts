@@ -91,4 +91,13 @@ export class SearchViewPage implements OnInit {
     this.sortMoreList.forEach(i=>item.key === i.key&&(item.selected = !item.selected))
     console.log(item.value)
   }
+
+  //点击确认按钮
+  onOkButtonClick(){
+
+  }
+  // 点击取消按钮
+  onCancelButtonClick(){
+
+  }
 }
