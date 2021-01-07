@@ -58,4 +58,13 @@ export const Production= [
         cate:'page',//类型-图标介绍
         path:'searchview',//案由
     },
+    {
+        title:'echarts图表',
+        icon:'./assets/img/icon_file_default.png',
+        content:'echarts图表',
+        subtitle:'',
+        updateTime:'2020-12-09',
+        cate:'page',//类型-图标介绍
+        path:'echart',//案由
+    },
 ]

@@ -1,0 +1,39 @@
+<div style="background-color: white;">
+  <div class="seg-container">
+    <div  *ngFor="let item of menu" class="wrapper">
+        <div [ngClass]="{'div-stopper':item.selected}" (click)="segmentChanged(item.key)">{{item.value}}</div>
+    </div>
+  </div>
+  <div class="seg-container" *ngIf="showDatePicker">
+    <ion-datetime
+   
+        [placeholder]="'开始时间'" 
+        displayFormat="YYYY-MM-DD HH:mm" 
+        [cancelText]="'取消'" 
+        [doneText]="'确定'" 
+        value={{startTime}}
+        (ionChange)="dateChange(0,$event)">
+    </ion-datetime>
+<ion-text style="line-height: 40px;">-</ion-text>
+    <!-- <ion-label>结束时间</ion-label> -->
+    <ion-datetime
+    
+        [placeholder]="'结束时间'" 
+        displayFormat="YYYY-MM-DD HH:mm" 
+        [cancelText]="'取消'" 
+        [doneText]="'确定'" 
+        value={{endTime}}
+        (ionChange)="dateChange(1,$event)">
+    </ion-datetime>
+  </div>
+  <div class="seg-container wrapper2" *ngIf="showDatePicker">
+    <ion-button color="medium" (click)="onButtonClick(0)">
+      取消
+    </ion-button>
+    <ion-button (click)="onButtonClick(1)">
+      确定
+    </ion-button>
+  </div>
+
+
+</div>

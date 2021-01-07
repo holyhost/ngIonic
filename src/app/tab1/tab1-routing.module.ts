@@ -32,6 +32,10 @@ const routes: Routes = [
     path: 'filechoose',
     loadChildren: ()=>import('../pages/example/e-filechoose/e-filechoose.module').then(m=>m.EFileChoosePageModule)
   },
+  {
+    path: 'echart',
+    loadChildren: ()=>import('../pages/example/e-echart-line/e-echart-line.module').then(m=>m.EchartLinePageModule)
+  },
 ];
 
 @NgModule({

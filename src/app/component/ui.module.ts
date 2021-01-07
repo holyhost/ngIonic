@@ -12,6 +12,7 @@ import { PpModule } from '../pipes/pp.module';
 import { BottomComponent } from './bottom/bottom.component';
 import { NoinfoComponent } from './noinfo/noinfo.component';
 import { SkeletonComponent } from './skeleton/skeleton.component';
+import { DateChooseComponent } from './datechoose/datehoose.component';
 
 
 
@@ -25,6 +26,7 @@ import { SkeletonComponent } from './skeleton/skeleton.component';
     BottomComponent,
     NoinfoComponent,
     SkeletonComponent,
+    DateChooseComponent,
     FileChooseComponent],
   imports: [
     IonicModule,
@@ -38,6 +40,7 @@ import { SkeletonComponent } from './skeleton/skeleton.component';
     ZzTableComponent,
     Menu2Component,
     NoinfoComponent,
+    DateChooseComponent,
     SkeletonComponent,
     BottomComponent,
     TitleComponent,FileChooseComponent,CommonModule,IonicModule,FormsModule

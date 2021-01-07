@@ -1,0 +1,109 @@
+*{margin: 0;padding: 0;}
+
+.menu_icon_container{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+    padding-bottom: 10px;
+    flex-wrap: wrap;
+    -webkit-box-shadow:0 12px 8px -8px #e1e1e1;
+    -moz-box-shadow:0 12px 8px -8px #e1e1e1;
+    box-shadow: 0 12px 8px -8px #e1e1e1;
+}
+
+.menu_icon_container .menu_item{
+  width: 33%;
+  margin-bottom: 15px;
+
+}
+
+.menu_icon_container .menu_item .icon_container{
+    width: 55px;
+    height: 55px;
+    margin: 0 auto;
+    text-align: center;
+    vertical-align: middle;
+    // background-image: linear-gradient(148deg, #67D2FF 1%, #68C4FF 33%, #4979FF 99%);
+    // box-shadow: 0 2px 4px 0 #67D2FF;
+    border-radius: 6px;
+    border-radius: 6px; 
+}
+
+.icon_bg_blue{
+    @extend .icon_container;
+    background-image: linear-gradient(148deg, #67D2FF 1%, #68C4FF 33%, #4979FF 99%);
+    box-shadow: 0 2px 4px 0 #67D2FF;
+}
+.icon_bg_red{
+    @extend .icon_container;
+    background-image: linear-gradient(144deg, #FCA774 4%, #FF8178 32%, #FF3467 99%);
+    box-shadow: 0 2px 4px 0 #FCA774;
+}
+.icon_bg_green{
+    @extend .icon_container;
+    background-image: linear-gradient(148deg, #8DEB87 1%, #83D97D 33%, #5DB656 99%);
+    box-shadow: 0 2px 4px 0 #8AE684;
+}
+.icon_bg_yellow{
+    @extend .icon_container;
+    background-image: linear-gradient(140deg, #FFEC1F 3%, #FED031 46%, #FFAF4C 99%);
+    box-shadow: 0 2px 4px 0 #FDCB65;
+}
+.icon_bg_orange{
+    @extend .icon_container;
+    background-image: linear-gradient(144deg, #FFB888 4%, #FF934B 32%, #FA6400 99%);
+    box-shadow: 0 2px 4px 0 #FFB888;
+}
+.icon_bg_purple{
+    @extend .icon_container;
+    background-image: linear-gradient(140deg, #A78FFF 3%, #8F70FF 46%, #5E34F8 99%);
+    box-shadow: 0 2px 4px 0#A78FFF;
+}
+
+.menu_icon_container .menu_item .icon_text{
+
+  margin-top: 5px;
+  color: #141F33;
+  text-align: center;
+}
+
+.work_situation_container{
+
+  margin-top: 15px;
+}
+.work_situation{
+      padding-left: 15px;
+      width: 100%;
+      // text-align: center;
+      font-size: 18px;
+      font-weight: 500;
+      color: #333333;
+      span{
+        background-color: #0080FF;
+        margin-right: .6rem;
+        border-radius: 2px;
+        font-size:14px;
+        display: inline-block;
+        vertical-align: middle;
+      }
+  
+}
+// 异常异动分析
+#echart_change{
+  width: 92vw;
+  height: 260px;
+  margin: 0 auto;
+  -webkit-box-shadow:0 12px 8px -8px #e1e1e1;
+  -moz-box-shadow:0 12px 8px -8px #e1e1e1;
+  box-shadow: 0 12px 8px -8px #e1e1e1;
+}
+
+// 异常异动词频图
+#echart_word{
+  width: 92vw;
+  height: 260px;
+  margin: 0 auto;
+  -webkit-box-shadow:0 12px 8px -8px #e1e1e1;
+  -moz-box-shadow:0 12px 8px -8px #e1e1e1;
+  box-shadow: 0 12px 8px -8px #e1e1e1;
+}

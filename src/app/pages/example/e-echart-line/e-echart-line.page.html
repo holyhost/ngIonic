@@ -1,0 +1,24 @@
+<app-title title="echarts-折线图" back="true"></app-title>
+<ion-content [fullscreen]="true">
+
+
+  <div class="work_situation_container">
+    <p class="work_situation">
+      <span>&nbsp;&nbsp;</span>
+      天气预告
+    </p>
+    <div id="echart_change">
+
+    </div>
+  </div>
+  <div class="work_situation_container">
+    <p class="work_situation">
+      <span>&nbsp;&nbsp;</span>
+      异常异动词频图
+    </p>
+    <app-datechoose (onDateTypeChange)="onDateChanged($event)"></app-datechoose>
+    <div id="echart_word">
+
+    </div>
+  </div>
+</ion-content>
