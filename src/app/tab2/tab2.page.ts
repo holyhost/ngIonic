@@ -10,7 +10,7 @@ export class Tab2Page {
   ws: WebSocket
 
   constructor() {
-    this.connectServer()
+    // this.connectServer()
   }
 
   connectServer(){

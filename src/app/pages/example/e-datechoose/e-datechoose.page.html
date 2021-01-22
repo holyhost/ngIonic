@@ -1,0 +1,28 @@
+<app-title title="时间选择"></app-title>
+
+<ion-content>
+
+    <ion-header>
+        <ion-label>使用默认时间</ion-label>
+    </ion-header>
+    <app-datechoose ngDefaultControl  (onDateTypeChange)="onDateChanged($event)"></app-datechoose>
+    <ion-item>
+        <ion-label>开始时间：{{startTime}}</ion-label>
+    </ion-item>
+    <ion-item>
+        <ion-label>结束时间：{{endTime}}</ion-label>
+    </ion-item>
+    <hr>
+    <hr>
+    <hr>
+    <ion-header>
+        <ion-label>使用自定义时间</ion-label>
+    </ion-header>
+    <app-datechoose [typeList]="mytype"  ngDefaultControl (onDateTypeChange)="onDateChanged1($event)"></app-datechoose>
+    <ion-item>
+        <ion-label>开始时间：{{startTime1}}</ion-label>
+    </ion-item>
+    <ion-item>
+        <ion-label>结束时间：{{endTime1}}</ion-label>
+    </ion-item>
+</ion-content>

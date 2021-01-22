@@ -66,7 +66,8 @@ export class DateChooseComponent implements OnInit, OnDestroy {
         DateChooseType.deftime,
       ]
     } 
-    this.menu = this.typeList.map(key => MenuTypeList.find(item => item.key === key))
+    //避免使用同一个对象出现的 地址引用问题。
+    this.menu = this.typeList.map(key => JSON.parse(JSON.stringify(MenuTypeList.find(item => item.key === key))))
     for (let index = 0; index < this.menu.length; index++) {
       let element = this.menu[index];
       if(index === this.choosed){
@@ -75,7 +76,6 @@ export class DateChooseComponent implements OnInit, OnDestroy {
         element.selected = false;
       }
     }
-    
   }
 
 
@@ -101,7 +101,6 @@ export class DateChooseComponent implements OnInit, OnDestroy {
     console.log("tab", key)
     for (let index = 0; index < this.typeList.length; index++) {
       let item = this.typeList[index];
-      console.log("item", key)
       if (item === key) {
         this.choosed = index;
         let result = (this.getDateByType(key))
@@ -156,6 +155,14 @@ export class DateChooseComponent implements OnInit, OnDestroy {
       //自定义
       date2 = new Date(this.endTime)
       date1 = new Date(this.startTime)
+    }else if(key === DateChooseType.recent7){
+      //最近7天
+      date2 = new Date(this.util.getDayFirstTime(date2))//今天零点的时间
+      date1 = new Date(date2.getTime()-7*24*60*60*1000)//往前推7天
+    }else if(key === DateChooseType.recent30){
+      //最近30天
+      date2 = new Date(this.util.getDayFirstTime(date2))//今天零点的时间
+      date1 = new Date(date2.getTime()-30*24*60*60*1000)//往前推30天
     }
     result[0] = this.util.dateFormat(date1)//开始时间
     result[1] = this.util.dateFormat(date2)//结束时间

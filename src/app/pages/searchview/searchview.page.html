@@ -2,6 +2,15 @@
 <app-title title="搜索" [back]='true'></app-title>
 <!-- 列表内容主体 -->
 <ion-content>
+  <ion-refresher style="z-index: 10;" slot="fixed" (ionRefresh)="doRefresh($event)"  color="primary">
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="下拉刷新"
+      refreshingSpinner="circles"
+      pullMin="100"
+      refreshingText="加载数据中">
+    </ion-refresher-content>
+  </ion-refresher>
 
  <!-- 搜索框 -->
   <div class="searche-box">

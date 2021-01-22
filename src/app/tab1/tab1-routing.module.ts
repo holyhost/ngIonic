@@ -33,6 +33,10 @@ const routes: Routes = [
     loadChildren: ()=>import('../pages/example/e-filechoose/e-filechoose.module').then(m=>m.EFileChoosePageModule)
   },
   {
+    path: 'zzdate',
+    loadChildren: ()=>import('../pages/example/e-datechoose/e-datechoose.module').then(m=>m.EDateChoosePageModule)
+  },
+  {
     path: 'echart',
     loadChildren: ()=>import('../pages/example/e-echart-line/e-echart-line.module').then(m=>m.EchartLinePageModule)
   },

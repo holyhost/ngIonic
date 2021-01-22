@@ -46,6 +46,13 @@ export class SearchViewPage implements OnInit {
 
   }
 
+  //下拉刷新
+  doRefresh(event) {
+    setTimeout(() => {
+      event&&event.target.complete();
+    }, 2100);
+  }
+
   initTestData() {
 
     this.sortList = [
@@ -87,22 +94,22 @@ export class SearchViewPage implements OnInit {
     if (item.type === SortTypeEnum.Sortu || item.type === SortTypeEnum.Sortd) {
       item.selected = true;
       item.type = item.type * (-1)
-    }else if(item.type === SortTypeEnum.Menu) {
+    } else if (item.type === SortTypeEnum.Menu) {
       item.selected = !item.selected
       this.isShowOptions = true
-      
-    }else if(item.type === SortTypeEnum.Menux){
+
+    } else if (item.type === SortTypeEnum.Menux) {
       item.selected = !item.selected
-      if(item.selected){
+      if (item.selected) {
         //显示按钮，展示数据
         this.isShowButtons = true;
-      }else{
+      } else {
         this.isShowButtons = false;
       }
-    } else{
-      this.sortList.forEach(i=>item.key === i.key&&(item.selected = !item.selected))
+    } else {
+      this.sortList.forEach(i => item.key === i.key && (item.selected = !item.selected))
     }
-    
+
     // 降序升序事件，控制图标显示
     console.log(item.value)
   }

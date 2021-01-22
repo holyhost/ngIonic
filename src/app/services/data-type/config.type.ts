@@ -67,4 +67,13 @@ export const Production= [
         cate:'page',//类型-图标介绍
         path:'echart',//案由
     },
+    {
+        title:'时间选择控件',
+        icon:'./assets/img/icon_file_default.png',
+        content:'时间选择控件，昨日，今日，本月，自定义时间选择',
+        subtitle:'',
+        updateTime:'2020-12-09',
+        cate:'page',//类型-时间选择控件
+        path:'zzdate',//案由
+    },
 ]
