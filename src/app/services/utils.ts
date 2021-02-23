@@ -428,4 +428,50 @@ reverse(str: string): string {
      startTime = this.dateFormat(curDate,'yyyy-MM-dd')+" 00:00:00";
      return [startTime,endTime]
    }
+   /**
+    * 计算环比时间
+    */
+   dateQOQ(date0:string,date1:string):string[]{
+    let aimTime = new Date(date1)
+    let day: number = 30;
+    //上期 = 本期 - 一个月1,2,4,6,8,9,11 的上个月都是有11天的
+    let mon = aimTime.getMonth() + 1;
+    if (aimTime.getDay() === 31) {
+      day = 31;
+    } else if (mon === 1 || mon === 2 || mon === 4 || mon === 6 || mon === 8 || mon === 9 || mon === 11) {
+      day = 31
+    } else {
+      day = 30
+    }
+    let s0 = new Date(new Date(date0).getTime() - day * 24 * 60 * 60 * 1000);
+    let s1 = new Date(new Date(date1).getTime() - day * 24 * 60 * 60 * 1000);
+
+    return [this.dateFormat(s0),this.dateFormat(s1)]
+   }
+
+   /**
+    * 
+    * @param date0 开始时间
+    * @param date1 结束时间
+    */
+   dateYOY(date0:string,date1:string){
+    let aimTime = new Date(date1)
+    let day: number = 30;
+     //同期 = 本期 - 365天 （再判断一下是否闰年）
+    //如果今年是 闰年，2月28后， day = 366,2月前 day = 365
+    //如果上一年是 闰年 2月28后，day = 365，2 月前 day = 366
+    if (this.isLeapYear(aimTime.getFullYear()) && this.getMonAndDay(aimTime) > 228) {
+      day = 366
+    } else if (this.isLeapYear(aimTime.getFullYear() - 1) && this.getMonAndDay(aimTime) < 228) {
+      day = 366
+    } else {
+      day = 365
+    }
+    let s0 = new Date(new Date(date0).getTime() - day * 24 * 60 * 60 * 1000);
+    let s1 = new Date(new Date(date1).getTime() - day * 24 * 60 * 60 * 1000);
+    
+    return [this.dateFormat(s0),this.dateFormat(s1)]
+   }
+
+
 }

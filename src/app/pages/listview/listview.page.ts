@@ -1,6 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { AfterContentInit, AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IonInfiniteScroll } from '@ionic/angular';
+import { map } from 'rxjs/internal/operators/map';
 import { Story } from 'src/app/services/data-type/story.zhihu.type';
 import { HttpService } from 'src/app/services/http.service';
 import { IonService } from 'src/app/services/ion.servic';
@@ -15,7 +16,7 @@ import { Utils } from 'src/app/services/utils';
   templateUrl: 'listview.page.html',
   styleUrls: ['listview.page.scss']
 })
-export class ListViewPage implements OnInit {
+export class ListViewPage implements OnInit,AfterContentInit,AfterViewInit,OnDestroy {
 
   data: Story[] = []//知乎条目数据
   //时间 8位20201212
@@ -27,17 +28,17 @@ export class ListViewPage implements OnInit {
     public http: HttpService,
     public ion: IonService,
     public util: Utils,
-    public router: Router
+    public router: Router,
+    public route: ActivatedRoute,
   ) {
   }
 
   ngOnInit(): void {
-
     this.date = this.util.dateFormat(new Date(), 'yyyyMMdd')
     setTimeout(() => {
     this.loadData(true, false, this.date)
     }, 2000);
-
+    this.test()
   }
 
   /**
@@ -109,5 +110,43 @@ export class ListViewPage implements OnInit {
   onItemClick(item:any){
 
     this.router.navigate(['/storydetail'],{queryParams:{id:item.id}})
+  }
+  test(){
+    this.http.loadZhihuNews().pipe(
+      map((res)=>  console.log("第1个map："+res)),
+      map(res=>  {
+        console.log("第2 个map="+res)
+        return 'aa'
+      }),
+      map((res)=>  {
+        console.log("第3 个map="+res)
+        return {aa:123}
+      })
+
+    ).subscribe(res=>{
+    //  aa.unsubscribe()
+    console.log('最后的结果是：'+res)
+    })
+  }
+
+  ngAfterContentChecked(): void {
+    //Called after every check of the component's or directive's content.
+    //Add 'implements AfterContentChecked' to the class.
+    
+  }
+  ngAfterContentInit(): void {
+    //Called after ngOnInit when the component's or directive's content has been initialized.
+    //Add 'implements AfterContentInit,AfterViewInit,OnDestroy' to the class.
+    console.log("生命周期-AfterContentInit")
+  }
+  ngAfterViewInit(): void {
+    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
+    //Add 'implements AfterViewInit' to the class.
+    console.log("生命周期-AfterViewInit")
+  }
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    console.log("生命周期-OnDestroy")
   }
 }

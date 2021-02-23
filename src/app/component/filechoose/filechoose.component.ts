@@ -23,7 +23,7 @@ export class FileInfo{
   styleUrls: ['./filechoose.component.scss'],
 })
 /**
- * 待办事项条目
+ * 文件选择控件
  */
 export class FileChooseComponent implements OnInit {
 
@@ -33,7 +33,7 @@ export class FileChooseComponent implements OnInit {
   // file类型的属性
   // lastModified: 1589514435693
   // lastModifiedDate: Fri May 15 2020 11:47:15 GMT+0800 (中国标准时间) {}
-  // name: "Fastdfs接口文档 - 1.3.0.doc"
+  // name: "F文档 - 1.3.0.doc"
   // size: 103424
   // type: "application/msword"
   // webkitRelativePath: ""

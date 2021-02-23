@@ -58,7 +58,7 @@ export class SearchViewPage implements OnInit {
     this.sortList = [
       new SearchTypeBean("1", "优质", false, 101),
       new SearchTypeBean("2", "分类", false, 102),
-      new SearchTypeBean("3", "销量", false, 104),
+      new SearchTypeBean("3", "销量", false, 311),
     ]
 
     this.sortMoreList = [
@@ -88,13 +88,20 @@ export class SearchViewPage implements OnInit {
     let tempTime = new Date().getTime();
 
   }
+  test1(){
+    console.log("---test1 进来了")
+  }
 
   //排序的数据条目点击了
   onSearchTypeClick(item: SearchTypeBean) {
     if (item.type === SortTypeEnum.Sortu || item.type === SortTypeEnum.Sortd) {
       item.selected = true;
       item.type = item.type * (-1)
-    } else if (item.type === SortTypeEnum.Menu) {
+    } else if (item.type === SortTypeEnum.Click) {
+      //点击事件，执行对应的方法
+      eval(item.data[0])
+
+    }else if (item.type === SortTypeEnum.Menu) {
       item.selected = !item.selected
       this.isShowOptions = true
 
