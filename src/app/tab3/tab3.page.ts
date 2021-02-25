@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { IonReorderGroup } from '@ionic/angular';
+import { from } from 'rxjs';
 import { BaseBean } from '../services/data-type/base.type';
 import { ThemeService } from '../services/theme.service';
+import { ItemReorderEventDetail } from '@ionic/core';
 
 @Component({
   selector: 'app-tab3',
@@ -10,6 +13,7 @@ import { ThemeService } from '../services/theme.service';
 export class Tab3Page {
 
 
+  @ViewChild('reorder') reorder: IonReorderGroup;
   themes: BaseBean[]= []
 
   constructor(private theme: ThemeService) {
@@ -52,4 +56,25 @@ export class Tab3Page {
   }
 
 
+  toggleReorder() {
+    // this.reorder.disabled = !this.reorder.disabled;
+    // this.reorder.addEventListener('ionItemReorder', ({detail}) => {
+    //   detail.complete(true);
+    // });
+  }
+
+  doReorder(ev: CustomEvent<ItemReorderEventDetail>) {
+    // The `from` and `to` properties contain the index of the item
+    // when the drag started and ended, respectively
+    console.log('Dragged from index', ev.detail.from, 'to', ev.detail.to);
+
+    // Finish the reorder and position the item in the DOM based on
+    // where the gesture ended. This method can also be called directly
+    // by the reorder group
+    ev.detail.complete();
+  }
+
+  toggleReorderGroup() {
+    this.reorder.disabled = !this.reorder.disabled;
+  }
 }

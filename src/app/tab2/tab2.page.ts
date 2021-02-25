@@ -1,6 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/internal/operators';
+import { ConfigService } from '../services/config.service';
+import { BaseBean } from '../services/data-type/base.type';
+import { ItemReorderEventDetail } from '@ionic/core';
+import { IonReorderGroup } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab2',
@@ -10,27 +14,14 @@ import { map } from 'rxjs/internal/operators';
 export class Tab2Page {
 
   ws: WebSocket
+  @ViewChild('reorder') reorder: IonReorderGroup;
+  menu: BaseBean[] = []
 
-  constructor() {
+  constructor(
+    public cs: ConfigService
+  ) {
     // this.connectServer()
-    let aa = new Observable(aa=>{
-      aa.next('start')
-    }).pipe(
-      map((res)=>  console.log("第1个map："+res)),
-      map(res=>  {
-        console.log("第2 个map="+res)
-        return 'aa'
-      }),
-      map((res)=>  {
-        console.log("第3 个map="+res)
-        return "bb"
-      })
-
-    ).subscribe(res=>{
-    //  aa.unsubscribe()
-    console.log('最后的结果是：'+res)
-    })
-    console.log(aa)
+    this.menu = cs.MenuList
   }
 
   connectServer(){
@@ -55,4 +46,22 @@ export class Tab2Page {
     }
   }
 
+
+  doReorder(ev: CustomEvent<ItemReorderEventDetail>) {
+    // The `from` and `to` properties contain the index of the item
+    // when the drag started and ended, respectively
+    console.log('Dragged from index', ev.detail.from, 'to', ev.detail.to);
+
+    // Finish the reorder and position the item in the DOM based on
+    // where the gesture ended. This method can also be called directly
+    // by the reorder group
+    ev.detail.complete();
+    this.cs.update(ev.detail.from,ev.detail.to)
+    
+    
+  }
+
+  toggleReorderGroup() {
+    this.reorder.disabled = !this.reorder.disabled;
+  }
 }

@@ -53,6 +53,13 @@ export class EchartLinePage implements OnInit {
   }
 
 
+  changeH(){
+    if(this.myChart1){
+      document.getElementById('echart_change').style.height='360px'
+      this.myChart1.resize({height:'360px'});
+      
+    }
+  }
 
 
   initPieChart() {
@@ -100,7 +107,7 @@ export class EchartLinePage implements OnInit {
           {
               name: '最高气温',
               type: 'line',
-              data: [11, 11, 15, 13, 12, 13, 10],
+              data: [11, 11, 15, 13, 12, 13, 19],
               markPoint: {
                   data: [
                       {type: 'max', name: '最大值'},

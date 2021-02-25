@@ -2,28 +2,15 @@
 
 <ion-content [fullscreen]="true">
 
+  <ion-list>
+    <ion-reorder-group (ionItemReorder)="doReorder($event)" disabled="false">
+      <ion-item *ngFor="let item of menu">
+        <ion-label [ngStyle]="{'color':item.color}">{{item.value}}</ion-label>
+        <ion-reorder slot="end"></ion-reorder>
+      </ion-item>
 
-  <ion-item>
-  
-    <ion-label class="ion-text-wrap" >
-      <ion-text color="medium">
-        H2 Pri假
-      </ion-text>
-    </ion-label>
-    <ion-label class="ion-text-wrap" >
-      <ion-text color="medium">
-        <p align='right'>疗法102309is发啊圣诞节快乐发就是了等；发生的看法；蓝色的就发；世纪东方；啦可是带积分了</p>
-      </ion-text>
-    </ion-label>
-  </ion-item>
-  <ion-item>
-    
-  </ion-item>
-  <div class="bg_content_gray">
-    <p><span class="mess_user">张三:</span> <span class="mess_date">2020-20-20 12:12:12</span></p>
-    <p class="mess_content">102309is发啊圣诞节快乐发就102309is发啊圣诞节快乐发就102309is发啊圣诞节快乐发就102309is发啊圣诞节快乐发就102309is发啊圣诞节快乐发就102309is发啊圣诞节快乐发就</p>
-
-  </div>
+    </ion-reorder-group>
+  </ion-list>
 
 
-  </ion-content>
+</ion-content>
