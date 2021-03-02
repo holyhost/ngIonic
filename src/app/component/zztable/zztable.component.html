@@ -15,7 +15,7 @@
   <table>
       <thead>
           <tr *ngIf="head">
-              <th *ngFor="let item of head" (click)="OnItemClick.emit(item)">{{item}} </th>
+              <th *ngFor="let item of head;let i = index" (click)="OnItemClick.emit(item)" [ngStyle]="{'width':wdList[i]}">{{item}} </th>
           </tr>
       </thead>
       <tbody *ngIf="data">

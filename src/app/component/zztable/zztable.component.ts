@@ -20,8 +20,9 @@ export class ZzTableComponent implements OnInit, OnDestroy {
   @Output() OnItemClick = new EventEmitter<string|ZzTableBean>();//点击条目，发射出这个条目
 
 
-  rowList = [];//测试数据
-  colList = [];//测试数据
+  // rowList = [];//测试数据
+  // colList = [];//测试数据
+  wdList:string[] = [];//每列宽度数组。
 
   constructor(
     public popoverController: PopoverController,
@@ -29,6 +30,32 @@ export class ZzTableComponent implements OnInit, OnDestroy {
   ) {
 
     this.initTestData2()
+    this.initWdthData()
+
+  }
+
+  initWdthData(){
+    this.wdList = []
+    if(this.head.length<1) return;
+    //根据当前数据，判断列的最大宽度
+    for(let j=0;j<this.head.length;j++){
+      // j表示列
+      let tempWidth = '120px'
+      let maxLength = 1;//值得最大长度
+      for(let i=0;i<this.data.length;i++){
+        // i 表示行
+        // 拿到每列的条目
+        let colItem = this.data[i][j]
+        if(colItem.value.toString().length>maxLength) {
+          maxLength = colItem.value.toString().length
+        }
+      }
+      // 根据值得最大长度，动态改变列的宽度
+      if(maxLength<10){
+        tempWidth = (maxLength+0.5)+'rem'
+      }
+      this.wdList[j] = tempWidth
+    }
 
   }
 
@@ -44,7 +71,7 @@ export class ZzTableComponent implements OnInit, OnDestroy {
             if(j%2 === 0){
               this.data[i][j] = new ZzTableBean(i+''+j,(i-j)+"",false,'mix','red')
             }else{
-              this.data[i][j] = new ZzTableBean(i+''+j,i+'---'+j,false,'text','blue')
+              this.data[i][j] = new ZzTableBean(i+''+j,i+'-------'+j,false,'text','blue')
             }
             
             
@@ -54,15 +81,15 @@ export class ZzTableComponent implements OnInit, OnDestroy {
         console.log(this.data)
   }
 
-  //测试数据
-  initTestData(){
-    for (let index = 0; index < 10; index++) {
-      this.rowList.push(index)
-    }
-    for (let index = 0; index < 30; index++) {
-      this.colList.push(index)
-    }
-  }
+  // //测试数据
+  // initTestData(){
+  //   for (let index = 0; index < 10; index++) {
+  //     this.rowList.push(index)
+  //   }
+  //   for (let index = 0; index < 30; index++) {
+  //     this.colList.push(index)
+  //   }
+  // }
 
   ngOnInit() {
 

@@ -11,13 +11,26 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class BottomComponent implements OnInit {
 
+  @Input() text:string='已经到底了！'
+  @Input() more:string[] =[];
+
   constructor(
   ) { 
 
+    this.initTestData()
   }
 
   ngOnInit() {
 
+  }
+
+  initTestData(){
+    this.more = [
+      '说明：',
+      '1. 本页数据从配置文件config.type.ts中读取；',
+      '2. 这是第二条说明；',
+      '3. 这是第三条说明；',
+    ]
   }
 
 }

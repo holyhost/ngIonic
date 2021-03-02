@@ -1,6 +1,10 @@
 
+  <div *ngIf="more&&more.length>0" class='div_more'>
+    <p *ngFor="let item of more">{{item}}</p>
+   
+  </div>
 <div class="wrapper">
   <span class="line"></span>
-  <span class="content">我是有底线的</span>
+  <span class="content">{{text}}</span>
   <span class="line"></span>
 </div>
