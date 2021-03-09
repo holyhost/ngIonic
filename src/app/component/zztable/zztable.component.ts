@@ -15,14 +15,15 @@ import { ZzTableBean } from './zztable.type';
  */
 export class ZzTableComponent implements OnInit, OnDestroy {
 
-  @Input() head: string[] = [];//表头
+  @Input() head: ZzTableBean[] = [];//表头
   @Input() data: ZzTableBean[][] = [];//默认选中的下标
   @Output() OnItemClick = new EventEmitter<string|ZzTableBean>();//点击条目，发射出这个条目
+  @Output() OnHeaderClick = new EventEmitter<number>();//点击头部，发射出这个条目
 
 
   // rowList = [];//测试数据
   // colList = [];//测试数据
-  wdList:string[] = [];//每列宽度数组。
+  wdList:number[] = [];//每列宽度数组。
 
   constructor(
     public popoverController: PopoverController,
@@ -40,7 +41,7 @@ export class ZzTableComponent implements OnInit, OnDestroy {
     //根据当前数据，判断列的最大宽度
     for(let j=0;j<this.head.length;j++){
       // j表示列
-      let tempWidth = '120px'
+      let tempWidth = 120
       let maxLength = 1;//值得最大长度
       for(let i=0;i<this.data.length;i++){
         // i 表示行
@@ -52,17 +53,35 @@ export class ZzTableComponent implements OnInit, OnDestroy {
       }
       // 根据值得最大长度，动态改变列的宽度
       if(maxLength<10){
-        tempWidth = (maxLength+0.5)+'rem'
+        tempWidth = maxLength*10+20
       }
       this.wdList[j] = tempWidth
     }
-
+    //为了防止总体数量过少，没有全部撑开屏幕宽度展示，给最小的那几个增加宽度
+    let totalW = 0
+    this.wdList.forEach(wd=>totalW+=wd)
+    let bodywd = document.body.clientWidth-20;
+    console.log("body="+bodywd)
+    if(totalW<bodywd){
+      for (let i = 0; i < this.wdList.length; i++) {
+        let nn = this.wdList[i];
+        nn = nn+(bodywd-totalW)/this.wdList.length
+        this.wdList[i] = nn
+      }
+    }
   }
+
 
   initTestData2(){
         // let aa = [[1,2,3],[1,2,3],[1,2,3]]
         for (let i = 0; i < 10; i++) {
-          this.head.push("头部"+i)
+          if(i%3===0){
+            this.head.push(new ZzTableBean(i+'',"头部"+i,false,'mix'))
+
+          }else{
+          this.head.push(new ZzTableBean(i+'',"头部"+i,false))
+
+          }
         }
         this.data = []
         for (let i = 0; i < 30; i++) {
@@ -105,5 +124,35 @@ export class ZzTableComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     
   }
+
+  onHeaderClick(bean: ZzTableBean,col:number){
+
+    this.OnHeaderClick.emit(col)
+    //如果是需要排序的
+    if(bean.type === 'mix'){
+      //改变颜色
+      this.head.forEach(item=>{
+        item.color = '#a6a6a6'
+      })
+      bean.color = '#6CA1FF'
+      //调整顺序
+      bean.selected = !bean.selected
+      this.sortData(col,bean.selected?1:-1)
+    }
+  }
+
+  //对表格数据重新排序，
+  sortData(col:number,porn:number = 1){
+
+    console.log("重新排序：---")
+    // console.log(this.data)
+    this.data.sort((a,b)=>{
+        let aa = a[col].value as number
+        let bb = b[col].value as number
+        console.log(aa,bb)
+        return (aa-bb)*porn
+    })
+  } 
+
 
 }

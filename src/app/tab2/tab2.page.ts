@@ -5,7 +5,14 @@ import { ConfigService } from '../services/config.service';
 import { BaseBean } from '../services/data-type/base.type';
 import { ItemReorderEventDetail } from '@ionic/core';
 import { IonReorderGroup } from '@ionic/angular';
-
+class ListNode {
+  val: number
+  next: ListNode | null
+  constructor(val?: number, next?: ListNode | null) {
+      this.val = (val===undefined ? 0 : val)
+      this.next = (next===undefined ? null : next)
+  }
+}
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
@@ -22,6 +29,8 @@ export class Tab2Page {
   ) {
     // this.connectServer()
     this.menu = cs.MenuList
+
+    console.log(this.lengthOfLongestSubstring([-1,-2],[3]))
   }
 
   connectServer(){
@@ -64,4 +73,20 @@ export class Tab2Page {
   toggleReorderGroup() {
     this.reorder.disabled = !this.reorder.disabled;
   }
+
+
+  lengthOfLongestSubstring(nums1: number[], nums2: number[]): number {
+    nums1 = nums1.concat(nums2)
+    nums1 = Array.from(new Set(nums1))
+    nums1.sort()
+    if(nums1){
+        if(nums1.length%2 === 0){
+            return(nums1[nums1.length/2-2]+nums1[nums1.length/2-1])/2
+        }
+        return nums1[(nums1.length-1)/2]
+        
+    }else{
+        return 0
+    }
+}
 }

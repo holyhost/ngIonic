@@ -17,7 +17,7 @@ export class BottomComponent implements OnInit {
   constructor(
   ) { 
 
-    this.initTestData()
+    // this.initTestData()
   }
 
   ngOnInit() {
