@@ -15,7 +15,7 @@
   <table>
       <thead>
           <tr *ngIf="head">
-              <th *ngFor="let item of head;let i = index" (click)="onHeaderClick(item,i)" [ngStyle]="{'width':wdList[i]+'px'}">{{item.value}}<span *ngIf="item.type === 'mix'" [ngStyle]="{'color':item.color,'font-size':'14px'}"><span *ngIf="item.selected">▲</span> <span *ngIf="!item.selected">▼</span></span>   </th>
+              <th *ngFor="let item of head;let i = index" (click)="onHeaderClick(item,i)" [ngStyle]="{'width':wdList[i]+'px'}">{{item.value}}<span *ngIf="item.type === 'mix'" [ngStyle]="{'color':item.color,'font-size':'10px'}"><span *ngIf="item.selected">▲</span> <span *ngIf="!item.selected">▼</span></span>   </th>
           </tr>
       </thead>
       <tbody *ngIf="data">

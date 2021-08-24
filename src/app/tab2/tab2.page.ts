@@ -21,6 +21,35 @@ class ListNode {
 export class Tab2Page {
 
   ws: WebSocket
+
+  tfil = [
+    {
+      id:12,
+      name:'张一',
+      age:20,
+  },
+  {
+      id:23,
+      name:'张二',
+      age:31,
+  },
+  {
+      id:34,
+      name:'李三',
+      age:12,
+  },
+  {
+      id:45,
+      name:'张五',
+      age:33,
+  },
+  {
+      id:56,
+      name:'李六',
+      age:24,
+  }
+  ]
+
   @ViewChild('reorder') reorder: IonReorderGroup;
   menu: BaseBean[] = []
 

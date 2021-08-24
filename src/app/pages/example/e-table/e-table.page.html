@@ -1,4 +1,5 @@
 <app-title title="表单示例"></app-title>
 <ion-content>
-    <app-zztable></app-zztable>
+    <ion-button (click)="changeNumber()">改变条目</ion-button>
+    <app-zztable [head]="head" [data]='data'></app-zztable>
 </ion-content>

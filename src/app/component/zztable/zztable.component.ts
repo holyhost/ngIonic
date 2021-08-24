@@ -30,7 +30,7 @@ export class ZzTableComponent implements OnInit, OnDestroy {
     public nav: NavController,
   ) {
 
-    this.initTestData2()
+    // this.initTestData2()
     this.initWdthData()
 
   }
@@ -74,7 +74,8 @@ export class ZzTableComponent implements OnInit, OnDestroy {
 
   initTestData2(){
         // let aa = [[1,2,3],[1,2,3],[1,2,3]]
-        for (let i = 0; i < 10; i++) {
+        let colCount = 2;
+        for (let i = 0; i < colCount; i++) {
           if(i%3===0){
             this.head.push(new ZzTableBean(i+'',"头部"+i,false,'mix'))
 
@@ -86,7 +87,7 @@ export class ZzTableComponent implements OnInit, OnDestroy {
         this.data = []
         for (let i = 0; i < 30; i++) {
           this.data.push([])
-          for (let j = 0; j < 10; j++) {
+          for (let j = 0; j < colCount; j++) {
             if(j%2 === 0){
               this.data[i][j] = new ZzTableBean(i+''+j,(i-j)+"",false,'mix','red')
             }else{
